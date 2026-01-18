@@ -64,10 +64,6 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.06);
         }
-        .timeline h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
         .countdown {
             display: flex;
             justify-content: center;
@@ -87,6 +83,25 @@
             font-size: 2rem;
             font-weight: 500;
         }
+        .dress {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .dress div {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 18px;
+        }
         footer {
             background: #2f2f2f;
             color: #fff;
@@ -97,6 +112,16 @@
             margin: 0;
             font-size: 0.95rem;
             opacity: 0.85;
+        }
+        /* animations */
+        .fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
+        }
+        .fade.show {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -110,17 +135,14 @@
     </div>
 </header>
 
-<section>
+<section class="fade">
     <h2>Дорогие гости</h2>
     <div class="card">
-        <p>
-            Совсем скоро в нашей жизни произойдёт очень важное событие — мы станем семьёй.
-            Будем счастливы разделить этот тёплый и трогательный день вместе с вами.
-        </p>
+        <p>Будем счастливы разделить с вами самый важный и тёплый день нашей жизни.</p>
     </div>
 </section>
 
-<section>
+<section class="fade">
     <h2>До свадьбы осталось</h2>
     <div class="countdown">
         <div><span id="days">0</span>дней</div>
@@ -130,34 +152,37 @@
     </div>
 </section>
 
-<section>
-    <h2>Программа дня</h2>
-    <div class="timeline">
-        <div>
-            <h3>15:00</h3>
-            <p>Сбор гостей</p>
-        </div>
-        <div>
-            <h3>16:00</h3>
-            <p>Церемония</p>
-        </div>
-        <div>
-            <h3>17:00</h3>
-            <p>Банкет</p>
-        </div>
-        <div>
-            <h3>23:00</h3>
-            <p>Завершение вечера</p>
+<section class="fade">
+    <h2>Dress Code</h2>
+    <div class="card">
+        <p>Будем рады, если вы поддержите цветовую гамму нашего торжества:</p>
+        <div class="dress">
+            <div style="background:#e8d8c3"></div>
+            <div style="background:#c9b8a6"></div>
+            <div style="background:#a89c8a"></div>
+            <div style="background:#6f6258"></div>
         </div>
     </div>
 </section>
 
-<section>
+<section class="fade">
+    <h2>Программа дня</h2>
+    <div class="timeline">
+        <div><h3>15:00</h3><p>Сбор гостей</p></div>
+        <div><h3>16:00</h3><p>Церемония</p></div>
+        <div><h3>17:00</h3><p>Банкет</p></div>
+        <div><h3>23:00</h3><p>Завершение вечера</p></div>
+    </div>
+</section>
+
+<section class="fade">
     <h2>Место проведения</h2>
     <div class="card">
         <p><strong>Ресторан «Paradise»</strong></p>
         <p>Суксунский р-н, с. Ключи</p>
         <p>ул. Молодежная, 30г</p>
+        <br>
+        <iframe src="https://yandex.ru/map-widget/v1/?mode=search&text=Ресторан%20Paradise%20Ключи"></iframe>
     </div>
 </section>
 
@@ -167,26 +192,25 @@
 
 <script>
     const weddingDate = new Date('2026-08-08T00:00:00').getTime();
-
     function updateCountdown() {
         const now = new Date().getTime();
         const diff = weddingDate - now;
-
         if (diff <= 0) return;
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        const seconds = Math.floor((diff / 1000) % 60);
-
-        document.getElementById('days').textContent = days;
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
-        document.getElementById('seconds').textContent = seconds;
+        document.getElementById('days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').textContent = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        document.getElementById('minutes').textContent = Math.floor((diff / (1000 * 60)) % 60);
+        document.getElementById('seconds').textContent = Math.floor((diff / 1000) % 60);
     }
-
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('show');
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 </script>
 
 </body>
