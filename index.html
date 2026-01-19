@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Свадьба Дарьи и Андрея — 08.08.2026</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d4af37">
+    <link rel="apple-touch-icon" href="android-chrome-192x192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -12,7 +17,7 @@
 
     <style>
         :root {
-            --primary: #d4af37; /* Gold */
+            --primary: #d4af37;
             --primary-dark: #b8962d;
             --bg: #fffcf9;
             --text: #333;
@@ -20,136 +25,70 @@
         }
 
         * { box-sizing: border-box; }
-
         body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            margin: 0; font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg); color: var(--text);
+            line-height: 1.6; overflow-x: hidden;
         }
 
-        h1, h2, h3 { 
-            font-family: 'Great Vibes', cursive; 
-            color: var(--primary); 
-            font-weight: 400;
-        }
+        h1, h2, h3 { font-family: 'Great Vibes', cursive; color: var(--primary); font-weight: 400; }
+        section { padding: 80px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
 
-        section { 
-            padding: 100px 20px; 
-            text-align: center; 
-            max-width: 800px; 
-            margin: 0 auto; 
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             background: linear-gradient(rgba(255,252,249,0.6), rgba(255,252,249,0.6)), 
                         url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') center/cover no-repeat;
-            position: relative;
         }
-
-        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); margin: 0; }
-        .hero-date { font-size: 1.5rem; letter-spacing: 5px; margin: 20px 0; font-weight: 300; }
+        .hero h1 { font-size: clamp(3.5rem, 12vw, 6.5rem); margin: 0; }
+        .hero-date { font-size: 1.5rem; letter-spacing: 5px; margin: 20px 0; }
 
         /* Countdown */
-        #countdown {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        .time-block {
-            background: white;
-            padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            min-width: 80px;
-        }
+        #countdown { display: flex; gap: 15px; margin-top: 20px; }
+        .time-block { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); min-width: 80px; }
         .time-block div { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
         .time-block span { font-size: 0.7rem; text-transform: uppercase; color: #888; }
 
-        /* Buttons */
+        /* Timeline (Program) */
+        .timeline { position: relative; padding: 40px 0; margin-top: 30px; }
+        .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: #eee; transform: translateX(-50%); }
+        .timeline-item { margin-bottom: 40px; position: relative; width: 100%; }
+        .timeline-content {
+            width: 45%; padding: 20px; background: white; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; text-align: left;
+        }
+        .timeline-item:nth-child(even) .timeline-content { margin-left: auto; }
+        .timeline-point {
+            width: 16px; height: 16px; background: var(--primary); border: 3px solid var(--bg);
+            border-radius: 50%; position: absolute; top: 25px; left: 50%; transform: translateX(-50%); z-index: 2;
+        }
+
+        /* Palette */
+        .palette { display: flex; justify-content: center; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
+        .color-circle { width: 55px; height: 55px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+
+        /* General UI */
+        .card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
         .btn {
-            background: var(--primary);
-            color: white;
-            padding: 16px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            display: inline-block;
-            margin: 20px 5px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
+            background: var(--primary); color: white; padding: 16px 35px; text-decoration: none;
+            border-radius: 50px; display: inline-block; margin: 10px; transition: 0.3s; font-weight: 600;
         }
-        .btn:hover { 
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212,175,55,0.3);
-        }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(212,175,55,0.3); }
+        #map { height: 400px; width: 100%; border-radius: 20px; margin-top: 30px; }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Map & Details */
-        #map { height: 400px; width: 100%; border-radius: 20px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .address-box { margin-bottom: 30px; }
-
-        /* Dresscode Palette */
-        .palette { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            margin: 30px 0; 
-            flex-wrap: wrap;
-        }
-        .color-circle {
-            width: 60px; height: 60px; border-radius: 50%; 
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .color-circle:hover { transform: translateY(-10px); }
-
-        /* Cards */
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-            border: 1px solid #f0f0f0;
-        }
-        .card-blue { background: var(--accent-blue); border: none; }
-
-        footer { padding: 40px; text-align: center; font-size: 0.8rem; opacity: 0.6; }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 3.5rem; }
-            #countdown { gap: 8px; }
-            .time-block { min-width: 65px; padding: 10px; }
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-content { width: calc(100% - 60px); margin-left: 50px !important; }
+            .timeline-point { left: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div data-aos="fade-down" data-aos-duration="1500">
+    <section class="hero">
+        <div data-aos="fade-up" data-aos-duration="1500">
             <h1>Дарья & Андрей</h1>
             <div class="hero-date">08.08.2026</div>
-            
             <div id="countdown">
                 <div class="time-block"><div id="days">00</div><span>Дней</span></div>
                 <div class="time-block"><div id="hours">00</div><span>Часов</span></div>
@@ -157,100 +96,91 @@
                 <div class="time-block"><div id="secs">00</div><span>Сек</span></div>
             </div>
         </div>
-    </header>
+    </section>
 
     <section id="details" data-aos="fade-up">
-        <h2>Локация и время</h2>
-        <div class="address-box">
-            <p style="font-size: 1.2rem; margin-bottom: 5px;"><strong>Начало в 16:00</strong></p>
-            <p>Ресторан «Paradise»</p>
-            <p>Суксунский р-н, с. Ключи, ул. Молодежная, 30г</p>
-        </div>
-        
+        <h2>Где и когда</h2>
+        <p><strong>8 августа 2026 года в 16:00</strong></p>
+        <p>Ресторан «Paradise»<br>Суксунский р-н, с. Ключи, ул. Молодежная, 30г</p>
         <div id="map"></div>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Свадьба+Дарьи+и+Андрея&dates=20260808T130000Z/20260808T200000Z&location=Ресторан+Paradise,+с.+Ключи" target="_blank" class="btn" style="background:none; color:var(--primary); border:1px solid var(--primary)">Добавить в календарь</a>
+    </section>
 
-        <div class="calendar-buttons">
-            <p>Добавить событие в календарь:</p>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Свадьба+Дарьи+и+Андрея&dates=20260808T130000Z/20260808T200000Z&details=Ждем+вас!&location=Ресторан+Paradise,+с.+Ключи" target="_blank" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.8rem;">Google Calendar</a>
+    <section id="program" data-aos="fade-up">
+        <h2>Программа дня</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>16:00</h3><p>Сбор гостей и фуршет</p></div></div>
+            <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>16:30</h3><p>Церемония регистрации</p></div></div>
+            <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>18:00</h3><p>Праздничный ужин</p></div></div>
+            <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>23:00</h3><p>Завершение вечера</p></div></div>
         </div>
     </section>
 
     <section id="dresscode" data-aos="fade-up">
         <div class="card">
             <h2>Дресс-код</h2>
-            <p>Мы очень старались сделать этот день красивым и будем признательны, если вы поддержите цветовую гамму нашего праздника в своих нарядах:</p>
+            <p>Будем признательны, если вы поддержите палитру нашей свадьбы:</p>
             <div class="palette">
-                <div class="color-circle" style="background-color: #E6E2D3;" title="Бежевый"></div>
-                <div class="color-circle" style="background-color: #D4AF37;" title="Золотой"></div>
-                <div class="color-circle" style="background-color: #93A291;" title="Шалфей"></div>
-                <div class="color-circle" style="background-color: #556B2F;" title="Оливковый"></div>
-                <div class="color-circle" style="background-color: #2C3E50;" title="Темно-синий"></div>
+                <div class="color-circle" style="background-color: #E6E2D3;"></div>
+                <div class="color-circle" style="background-color: #D4AF37;"></div>
+                <div class="color-circle" style="background-color: #93A291;"></div>
+                <div class="color-circle" style="background-color: #556B2F;"></div>
+                <div class="color-circle" style="background-color: #2C3E50;"></div>
             </div>
         </div>
     </section>
 
-    <section id="wishlist" data-aos="fade-up">
-        <h2>Подарки</h2>
-        <p>Ваше присутствие — самый главный подарок для нас! Если же вы захотите поздравить нас материально, мы будем рады вкладу в бюджет нашей молодой семьи в конверте.</p>
-    </section>
-
     <section id="photos" data-aos="zoom-in">
-        <div class="card card-blue">
-            <h2>Фото-облако</h2>
-            <p>Здесь вы сможете найти наши свадебные фото и поделиться своими кадрами в день свадьбы:</p>
-            <a href="https://disk.yandex.ru/d/H7QFTkawYV6s_w" target="_blank" class="btn">Перейти в Яндекс.Диск</a>
+        <div class="card" style="background: var(--accent-blue);">
+            <h2>Фотографии</h2>
+            <p>Делитесь своими кадрами в нашем облаке!</p>
+            <a href="https://disk.yandex.ru/d/H7QFTkawYV6s_w" target="_blank" class="btn">Яндекс.Диск</a>
         </div>
     </section>
 
-    <section id="rsvp" data-aos="fade-up" style="padding-bottom: 150px;">
-        <h2>RSVP</h2>
-        <p>Пожалуйста, подтвердите ваше присутствие до 1 июля 2026 года, чтобы мы могли всё организовать идеально.</p>
-        <a href="https://forms.yandex.ru/u/696d2396e010db69624258eb" target="_blank" class="btn">Подтвердить присутствие</a>
+    <section id="playlist" data-aos="fade-up">
+        <h2>Музыка настроения</h2>
+        <iframe src="https://music.yandex.ru/iframe/#playlist/user/music-partners/1000" frameborder="0" style="border:none;width:100%;height:280px;border-radius:15px;"></iframe>
     </section>
 
-    <footer>
-        <p>&copy; 2026 — Дарья и Андрей</p>
+    <section id="rsvp" data-aos="fade-up">
+        <h2>Подтверждение</h2>
+        <p>Пожалуйста, ответьте на вопросы формы до 01.07.2026</p>
+        <a href="https://forms.yandex.ru" target="_blank" class="btn">Заполнить анкету</a>
+    </section>
+
+    <footer style="padding: 40px; opacity: 0.5; font-size: 0.8rem;">
+        &copy; 2026 — Дарья и Андрей
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Init Animations
         AOS.init({ duration: 1000, once: true });
 
-        // Countdown Logic
+        // Timer
         const weddingDate = new Date("Aug 8, 2026 16:00:00").getTime();
-        
-        function updateTimer() {
+        setInterval(() => {
             const now = new Date().getTime();
-            const diff = weddingDate - now;
+            const d = weddingDate - now;
+            document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("mins").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
 
-            if (diff > 0) {
-                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            }
-        }
-        setInterval(updateTimer, 1000);
-        updateTimer();
-
-        // Yandex Map
-        ymaps.ready(function () {
-            var myMap = new ymaps.Map('map', {
-                center: [57.424544, 57.007162],
-                zoom: 14,
-                controls: ['zoomControl', 'fullscreenControl']
-            });
-            
-            var myPlacemark = new ymaps.Placemark([57.424544, 57.007162], {
-                balloonContent: '<strong>Ресторан Paradise</strong><br>Ждем вас здесь!'
-            }, {
-                preset: 'islands#goldStretchyIcon'
-            });
-            
-            myMap.geoObjects.add(myPlacemark);
-            myMap.behaviors.disable('scrollZoom'); // Отключаем зум скроллом для удобства лендинга
+        // Map
+        ymaps.ready(() => {
+            const map = new ymaps.Map('map', { center: [57.424544, 57.007162], zoom: 15, controls: [] });
+            map.geoObjects.add(new ymaps.Placemark([57.424544, 57.007162], { balloonContent: 'Ресторан Paradise' }));
+            map.behaviors.disable('scrollZoom');
         });
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').catch(err => console.log('SW error:', err));
+            });
+        }
     </script>
 </body>
 </html>
