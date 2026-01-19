@@ -1,14 +1,20 @@
 {
   "name": "Свадьба Дарьи и Андрея",
-  "short_name": "Wedding2026",
+  "short_name": "Даша & Андрей",
+  "description": "Приглашение на свадьбу Дарьи и Андрея 08.08.2026",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fffcf9",
   "theme_color": "#d4af37",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
