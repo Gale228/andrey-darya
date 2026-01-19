@@ -213,10 +213,16 @@
             document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000).toString().padStart(2, '0');
         }, 1000);
 
-        // Map
+        // Yandex Map с корректными координатами
         ymaps.ready(() => {
-            const map = new ymaps.Map('map', { center: [57.424544, 57.007162], zoom: 15, controls: ['zoomControl'] });
-            map.geoObjects.add(new ymaps.Placemark([57.424544, 57.007162], { balloonContent: 'Ресторан Paradise' }));
+            const map = new ymaps.Map('map', {
+                center: [57.007162, 57.424544], // Исправлено: Latitude, Longitude
+                zoom: 15,
+                controls: ['zoomControl']
+            });
+            map.geoObjects.add(new ymaps.Placemark([57.007162, 57.424544], {
+                balloonContent: 'Ресторан Paradise'
+            }));
             map.behaviors.disable('scrollZoom');
         });
     </script>
