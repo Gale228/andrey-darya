@@ -63,21 +63,44 @@
 
         /* Блок Hero */
         .hero {
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                         url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070') center/cover no-repeat fixed;
-            color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            color: white; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         }
         .hero h1 { color: white; font-size: clamp(4rem, 15vw, 8rem); margin: 0; }
 
         /* Дата под именами */
-        .hero-date { font-size: clamp(1.5rem, 5vw, 2.2rem); letter-spacing: 5px; margin: 20px 0; font-weight: 100%; }
+        .hero-date { 
+            font-size: clamp(1.5rem, 5vw, 2.2rem); 
+            letter-spacing: 5px; 
+            margin: 20px 0; 
+            font-weight: 100%;
+        }
 
         /* Контейнер таймера */
-        #countdown { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; width: 100%; max-width: 600px; padding: 0 20px; }
+        #countdown { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 30px; 
+            width: 100%; 
+            max-width: 600px; 
+            padding: 0 20px; }
         .time-block { 
-            background: rgba(255,255,255,0.9); padding: 20px; border-radius: 15px; 
-            min-width: 100px; backdrop-filter: blur(5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: rgba(255,255,255,0.9); 
+            padding: 20px; 
+            border-radius: 15px; 
+            min-width: 100px; 
+            backdrop-filter: blur(5px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .time-block div { font-size: 2rem; font-weight: 600; color: var(--primary); line-height: 1; }
         .time-block span { font-size: 0.8rem; text-transform: uppercase; color: #666; font-weight: 600; }
