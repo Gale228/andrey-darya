@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Свадьба Андрея и Дарьи — 08.08.2026</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Свадьба" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#f7f3f0">
+
+    <meta property="og:title" content="Свадьба Андрея и Дарьи">
+    <meta property="og:description" content="08.08.2026 — Ждем вас на нашем празднике!">
+    <meta property="og:image" content="https://andrey-darya-svadyba.ru/apple-touch-icon.png">
+    <meta property="og:url" content="https://andrey-darya-svadyba.ru">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+    <style>
+        :root {
+            --primary: #b8962d;
+            --gold-light: #d4af37;
+            --bg-light: #fffcf9;
+            --bg-dark: #f7f3f0;
+            --text: #2c2c2c;
+        }
+
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0; font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light); color: var(--text);
+            line-height: 1.7; overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+
+        h1, h2, h3 { font-family: 'Great Vibes', cursive; color: var(--primary); font-weight: 400; }
+        
+        h2 { 
+            font-size: clamp(2.5rem, 5vw, 3.5rem); 
+            display: flex; align-items: center; justify-content: center; gap: 20px;
+            margin-bottom: 40px;
+        }
+        h2::before, h2::after {
+            content: ""; height: 1px; width: 60px; background: var(--primary); opacity: 0.4;
+        }
+
+        section { padding: 100px 20px; text-align: center; max-width: 1000px; margin: 0 auto; position: relative; }
+        .section-alt { 
+            background-color: var(--bg-dark); 
+            max-width: 100%;
+            border-top: 1px solid rgba(184, 150, 45, 0.1);
+            border-bottom: 1px solid rgba(184, 150, 45, 0.1);
+        }
+
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070') center/cover no-repeat fixed;
+            color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero h1 { color: white; font-size: clamp(4rem, 15vw, 8rem); margin: 0; }
+        .hero-date { font-size: 1.8rem; letter-spacing: 8px; margin: 20px 0; font-weight: 300; }
+
+        #countdown { display: flex; gap: 20px; margin-top: 40px; }
+        .time-block { 
+            background: rgba(255,255,255,0.9); padding: 20px; border-radius: 15px; 
+            min-width: 100px; backdrop-filter: blur(5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .time-block div { font-size: 2rem; font-weight: 600; color: var(--primary); line-height: 1; }
+        .time-block span { font-size: 0.8rem; text-transform: uppercase; color: #666; font-weight: 600; }
+
+        .timeline { position: relative; padding: 50px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: var(--primary); opacity: 0.2; transform: translateX(-50%); }
+        .timeline-item { margin-bottom: 60px; position: relative; width: 100%; display: flex; justify-content: center; }
+        .timeline-content {
+            width: 40%; padding: 30px; background: white; border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08); position: relative; text-align: left;
+            border-left: 5px solid var(--primary);
+        }
+        .timeline-item:nth-child(even) { justify-content: flex-end; padding-right: 10%; }
+        .timeline-item:nth-child(odd) { justify-content: flex-start; padding-left: 10%; }
+        
+        .timeline-point {
+            width: 24px; height: 24px; background: var(--primary); border: 4px solid white;
+            border-radius: 50%; position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 2;
+            box-shadow: 0 0 0 8px rgba(184, 150, 45, 0.1);
+        }
+
+        .card { 
+            background: white; padding: 50px; border-radius: 30px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05); border: 1px solid rgba(184, 150, 45, 0.15);
+        }
+        .palette { display: flex; justify-content: center; gap: 20px; margin-top: 30px; }
+        .color-circle { 
+            width: 70px; height: 70px; border-radius: 50%; border: 4px solid white; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: 0.3s;
+        }
+        .color-circle:hover { transform: scale(1.15) rotate(5deg); }
+
+        #map { height: 450px; width: 100%; border-radius: 25px; margin-top: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        .btn {
+            background: var(--primary); color: white; padding: 20px 45px; text-decoration: none;
+            border-radius: 50px; display: inline-block; transition: 0.4s; font-weight: 600;
+            border: none; cursor: pointer; letter-spacing: 1px;
+        }
+        .btn:hover { background: #967a24; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(184, 150, 45, 0.4); }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-content { width: calc(100% - 70px) !important; margin-left: 50px !important; }
+            .timeline-point { left: 20px; }
+            .timeline-item { justify-content: flex-start !important; padding: 0 !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div data-aos="zoom-out" data-aos-duration="2000">
+            <h1>Андрей и Дарья</h1>
+            <div class="hero-date">08.08.2026</div>
+            <div id="countdown">
+                <div class="time-block"><div id="days">00</div><span>Дней</span></div>
+                <div class="time-block"><div id="hours">00</div><span>Часов</span></div>
+                <div class="time-block"><div id="mins">00</div><span>Мин</span></div>
+                <div class="time-block"><div id="secs">00</div><span>Сек</span></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="details" data-aos="fade-up">
+        <h2>Локация</h2>
+        <div class="card">
+            <p style="font-size: 1.4rem; color: var(--primary);"><strong>Начало праздника в 16:00</strong></p>
+            <p style="font-size: 1.1rem;">Ресторан «Paradise»<br>Суксунский р-н, с. Ключи, ул. Молодежная, 30г</p>
+            <div id="map"></div>
+            <br>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Свадьба+Дарьи+и+Андрея&dates=20260808T130000Z/20260808T200000Z&location=Ресторан+Paradise" target="_blank" class="btn" style="background:transparent; color:var(--primary); border:2px solid var(--primary)">Сохранить дату в календарь</a>
+        </div>
+    </section>
+
+    <div class="section-alt">
+        <section id="program" data-aos="fade-up">
+            <h2>Программа дня</h2>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>16:00</h3><p>Welcome-зона и фуршет</p></div></div>
+                <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>16:30</h3><p>Свадебная церемония</p></div></div>
+                <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>18:00</h3><p>Начало банкета</p></div></div>
+                <div class="timeline-item"><div class="timeline-point"></div><div class="timeline-content"><h3>23:00</h3><p>Торт и финал вечера</p></div></div>
+            </div>
+        </section>
+    </div>
+
+    <section id="dresscode" data-aos="fade-up">
+        <h2>Дресс-код</h2>
+        <div class="card">
+            <p>Мы будем искренне признательны, если при выборе нарядов вы поддержите палитру нашей свадьбы:</p>
+            <div class="palette">
+                <div class="color-circle" style="background-color: #E6E2D3;" title="Бежевый"></div>
+                <div class="color-circle" style="background-color: #D4AF37;" title="Золотой"></div>
+                <div class="color-circle" style="background-color: #93A291;" title="Шалфей"></div>
+                <div class="color-circle" style="background-color: #556B2F;" title="Оливковый"></div>
+                <div class="color-circle" style="background-color: #2C3E50;" title="Темно-синий"></div>
+            </div>
+            <p style="margin-top: 30px; font-style: italic; opacity: 0.8;">Будем рады видеть дам в платьях, а джентльменов в костюмах.</p>
+        </div>
+    </section>
+
+    <div class="section-alt">
+        <section id="wishlist" data-aos="zoom-in">
+            <h2>Подарки</h2>
+            <div class="card">
+                <p>Ваше присутствие на нашем празднике — самый ценный подарок для нас!</p>
+                <p>Мы будем искренне рады вашим подаркам, которые помогут нам обустроить наш дом и сделать начало семейной жизни еще ярче. Чтобы вам было проще определиться с выбором, мы подготовили список пожеланий.</p>
+                <div style="margin-top: 30px;">
+                    <a href="#" target="_blank" class="btn">Посмотреть Wish-list</a>
+                </div>
+                <div style="margin-top: 40px; border-top: 1px dashed var(--primary); padding-top: 30px;">
+                    <h3>Фото-облако</h3>
+                    <p>Все фото и видео находятся здесь:</p>
+                    <a href="https://disk.yandex.ru/d/H7QFTkawYV6s_w" target="_blank" class="btn" style="background:transparent; color:var(--primary); border:2px solid var(--primary)">Яндекс.Диск</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="Подтверждение" data-aos="fade-up" style="padding-bottom: 120px;">
+        <h2>Подтверждение</h2>
+        <div class="card" style="border: 2px solid var(--primary);">
+            <p>Пожалуйста, подтвердите ваше присутствие до 1 июля 2026 года</p>
+            <a href="https://forms.yandex.ru/u/696d2396e010db69624258eb" target="_blank" class="btn">Заполнить анкету гостя</a>
+        </div>
+    </section>
+
+    <footer style="padding: 60px; text-align: center; background: var(--bg-dark); border-top: 1px solid #ddd;">
+        <p style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary); margin: 0;">Андрей и Дарья</p>
+        <p style="opacity: 0.6; letter-spacing: 3px;">08.08.2026</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true });
+
+        // Таймер обратного отсчета
+        const weddingDate = new Date("Aug 8, 2026 16:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = weddingDate - now;
+            if (d > 0) {
+                document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("mins").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }, 1000);
+
+        // Яндекс.Карта с корректными координатами
+        ymaps.ready(() => {
+            const map = new ymaps.Map('map', { 
+                center: [57.007162, 57.424544], 
+                zoom: 15, 
+                controls: ['zoomControl'] 
+            });
+            const placemark = new ymaps.Placemark([57.007162, 57.424544], { 
+                balloonContent: '<strong>Ресторан Paradise</strong><br>Ждем вас!' 
+            }, {
+                preset: 'islands#goldStretchyIcon'
+            });
+            map.geoObjects.add(placemark);
+            map.behaviors.disable('scrollZoom');
+        });
+
+        // Регистрация Service Worker для PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').catch(err => console.error(err));
+            });
+        }
+    </script>
+</body>
+</html>
