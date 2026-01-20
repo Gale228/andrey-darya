@@ -65,7 +65,7 @@
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
                         url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070') center/cover no-repeat fixed;
-            color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            background-attachment: fixed; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); text-align: center;
         }
         .hero h1 { color: white; font-size: clamp(4rem, 15vw, 8rem); margin: 0; }
         .hero-date { font-size: 1.8rem; letter-spacing: 8px; margin: 20px 0; font-weight: 300; }
@@ -115,16 +115,14 @@
         }
         .btn:hover { background: #967a24; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(184, 150, 45, 0.4); }
 
-        @media (max-width: 768px) {
-            .timeline::before { left: 20px; }
-            .timeline-content { width: calc(100% - 70px) !important; margin-left: 50px !important; }
-            .timeline-point { left: 20px; }
-            .timeline-item { justify-content: flex-start !important; padding: 0 !important; }
+        @media (max-width: 1024px) {
+            .hero {
+                background-attachment: scroll !important;
+                background-position: center center;
         }
     </style>
 </head>
 <body>
-
     <header class="hero">
         <div data-aos="zoom-out" data-aos-duration="2000">
             <h1>Андрей и Дарья</h1>
