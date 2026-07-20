@@ -23,10 +23,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-
-    <style>
+<style>
         :root {
             --primary: #b8962d;
             --gold-light: #d4af37;
@@ -407,10 +404,7 @@
             opacity: 1;
             transform: translateX(-50%) translateY(0);
         }
-
-        #map { height: 450px; width: 100%; border-radius: 25px; margin-top: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-
-        .btn {
+.btn {
             background: linear-gradient(135deg, var(--primary), var(--gold-light));
             color: white; 
             padding: 20px 45px; 
@@ -531,11 +525,7 @@
             }
             
             /* Карта */
-            #map {
-                height: 300px;
-            }
-            
-            /* Кнопки */
+/* Кнопки */
             .btn {
                 padding: 15px 30px;
                 font-size: 0.95rem;
@@ -761,16 +751,7 @@
         }
 
         /* Анимация для карты */
-        #map { 
-            height: 450px; 
-            width: 100%; 
-            border-radius: 25px; 
-            margin-top: 40px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-        }
-
-        #map:hover {
+#map:hover {
             box-shadow: 0 30px 60px rgba(184, 150, 45, 0.2);
         }
     </style>
@@ -792,17 +773,6 @@
             </div>
         </div>
     </header>
-
-    <section id="details" data-aos="fade-up">
-        <h2>Локация</h2>
-        <div class="card">
-            <p style="font-size: 1.4rem; color: var(--primary);"><strong>Начало праздника в 16:00</strong></p>
-            <p style="font-size: 1.1rem;">Ресторан «Paradise»<br>Суксунский р-н, с. Ключи, ул. Молодежная, 30г</p>
-            <div id="map"></div>
-            <br>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Свадьба+Дарьи+и+Андрея&dates=20260808T130000Z/20260808T200000Z&location=Ресторан+Paradise" target="_blank" class="btn" style="background:transparent; color:var(--primary); border:2px solid var(--primary)">Сохранить дату в календарь</a>
-        </div>
-    </section>
 
     <div class="section-alt">
         <section id="program" data-aos="fade-up">
@@ -1021,24 +991,7 @@
                 document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000).toString().padStart(2, '0');
             }
         }, 1000);
-
-        // Яндекс.Карта с корректными координатами
-        ymaps.ready(() => {
-            const map = new ymaps.Map('map', { 
-                center: [57.007162, 57.424544], 
-                zoom: 15, 
-                controls: ['zoomControl'] 
-            });
-            const placemark = new ymaps.Placemark([57.007162, 57.424544], { 
-                balloonContent: '<strong>Ресторан Paradise</strong><br>Ждем вас!' 
-            }, {
-                preset: 'islands#goldStretchyIcon'
-            });
-            map.geoObjects.add(placemark);
-            map.behaviors.disable('scrollZoom');
-        });
-
-        // Регистрация Service Worker для PWA
+// Регистрация Service Worker для PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js').catch(err => console.error(err));
